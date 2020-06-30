@@ -1,0 +1,104 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.titleHolder {
+  padding-top: 5px;
+  height: 30px;
+  background-color: #C8C8C8;
+
+}
+#title {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
+  color: black;
+}
+
+#logo{
+   width: 20px;
+  height: 20px;
+
+}
+
+#default {
+  height: 100%;
+  width: 200px;
+
+}
+#createRoom{
+  background-color: white;
+  margin-top: 10px;
+}
+#joinRoom{
+  margin-top: 10px;
+  padding-top: 10px;
+  background-color:  	#E8E8E8;
+  padding-bottom:  10px;
+}
+#popup {
+  height: 100%;
+  width: 200px;
+}
+button {
+  background-color: white;
+  height: auto;
+  width: auto;
+  outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 14px;
+  transition-duration: 0.4s;
+  font-family : inherit;
+  font-size: 15px;
+  padding: 5px;
+}
+
+button:hover {
+  background-color: red;
+  color: white;
+  border-color: black;
+}
+
+#serverName{
+  margin-bottom: 10px;
+}
+
+#closePage{
+  margin-bottom: 10px;
+}
+
+#close{
+  margin-bottom: 10px;
+}
+#create{
+  margin-bottom: 10px;
+}
+
+#serverID{
+  font-size: 2em;
+}
+
+#roomArea{
+  margin-top: 10px;
+  background-color: white;
+}
+#closeAccess{
+  margin-top: 10px;
+background-color:  	#E8E8E8;
+padding-top: 10px;
+}
+#leaveArea{
+  margin-top: 10px;
+  background-color: white;
+  padding-bottom: 10px;
+}

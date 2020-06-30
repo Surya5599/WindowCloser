@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="stylesheet.css" rel="stylesheet">
+    <div class = "titleHolder">
+      <a id="title">
+      <img id= "logo" src="images/get_started128.png">  Window Closer
+    </a>
+  </div>
+  </head>
+  <body>
+     <container>
+      <div id = "default">
+        <div id="createRoom">
+          <button id="create">Create a Room</button><br>
+          <input type="checkbox" id="access" name="access">
+          <label for="access">Only I have Access To Close</label>
+        </div>
+        <div id="joinRoom">
+          <input class="inputBox" type="text" id="serverName" name="serverName"><br>
+          <button id="join">Join Room</button>
+        </div>
+      </div>
+      <div id = "popup">
+        <div id="roomArea">
+          Your room code is<br>
+          <a id="serverID">Server</a>
+          <button id="copy">Copy</button>
+        </div>
+        <div id=closeAccess>
+          Website to close enter keyword:
+          <input class="inputBox" type="text" id="closePage" name="closePage"><br>
+          <button id="close">Close It</button>
+        </div>
+        <div id="leaveArea">
+          <button id="leave">Leave Room</button>
+        </div>
+      </div>
+    </container>
+  <script src="default.js"></script>
+  </body>
+</html>
