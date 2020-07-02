@@ -4,12 +4,6 @@
 
 //'use strict';
 
-
-chrome.storage.local.set({whichPage: "default"});
-chrome.runtime.sendMessage({
-  msg: "default"
-});
-
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
       chrome.declarativeContent.onPageChanged.addRules([{
         conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -18,6 +12,12 @@ chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
             actions: [new chrome.declarativeContent.ShowPageAction()]
       }]);
     });
+
+
+chrome.storage.local.set({whichPage: "default"});
+chrome.runtime.sendMessage({
+  msg: "default"
+});
 
 var socket = io("https://server-connect-hangouts.herokuapp.com");
 
@@ -42,6 +42,12 @@ chrome.extension.onConnect.addListener(function(port) {
 			    socket.emit('close', {room: result.serverRoom, message: msg.message});
       });
 		}
+    else if(msg.type == "closeOthers"){
+      console.log("sending close Others only");
+      chrome.storage.local.get("serverRoom", function(result) {
+			    socket.emit('closeOthers', {room: result.serverRoom, message: msg.message});
+      });
+		}
 		else if(msg.type == "join"){
       console.log("sending join " + msg.message);
 			socket.emit('join', msg.message);
@@ -50,13 +56,21 @@ chrome.extension.onConnect.addListener(function(port) {
     });
 });
 
+  socket.on('created', createdServer);
+  socket.on('closed', closeHang);
+  socket.on('left', leftServer);
+  socket.on('badRoom', badRoom);
+  socket.on('joinLock', lockClick);
+  socket.on('roomSize', changeNumber);
 
 
-socket.on('created', createdServer);
-socket.on('closed', closeHang);
-socket.on('left', leftServer);
-socket.on('badRoom', badRoom);
-socket.on('joinLock', lockClick);
+function changeNumber(data){
+  console.log("recieved roomSize: " + data);
+  chrome.runtime.sendMessage({
+    msg: "roomNumber",
+    people: data
+  });
+}
 
 
 function lockClick(data){

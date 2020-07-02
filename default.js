@@ -80,6 +80,21 @@ function closeTab(){
   }
 }
 
+function closeTabOthers(){
+  var closeTab = document.getElementById("closePage").value;
+  if (!closeTab.replace(/\s/g, '').length) {
+    document.getElementById("closePage").style.borderColor="red";
+  }
+  else if(closeTab){
+    chrome.storage.local.set({whichPage: "popup"});
+    changePage();
+    port.postMessage({type: "closeOthers", message: closeTab});
+  }
+  else{
+    document.getElementById("closePage").style.borderColor="red";
+  }
+}
+
 
 function leaveServer(){
   port.postMessage({type: "leave", message: "none"});
@@ -102,6 +117,9 @@ chrome.runtime.onMessage.addListener(
           chrome.storage.local.set({whichPage: "locked"});
           startedServer();
           changePage();
+        }
+        else if(request.msg == "roomNumber"){
+          document.getElementById("people").innerHTML = request.people;
         }
         else{
           chrome.storage.local.set({whichPage: "popup"});
@@ -140,3 +158,4 @@ document.getElementById('leave').addEventListener('click', leaveServer);
 document.getElementById("serverName").addEventListener("click", changeBackground);
 document.getElementById("closePage").addEventListener("click", changeBackground);
 document.getElementById('copy').addEventListener('click', copyToClip);
+document.getElementById('closeOthers').addEventListener('click', closeTabOthers);

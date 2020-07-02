@@ -1,8 +1,8 @@
-  {
+   {
     "name": "WindowCloser",
-    "version": "1.0",
+    "version": "1.0.3",
     "description": "Close any tab for everyone!",
-    "permissions": ["storage", "tabs", "declarativeContent", "*://*/*", "clipboardWrite" ],
+    "permissions": ["storage", "tabs", "clipboardWrite",  "declarativeContent"],
     "background": {
       "page": "back.html"
     },
